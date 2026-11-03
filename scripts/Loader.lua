@@ -5,7 +5,7 @@
 -- https://discord.gg/u46cvej5xM
 
 local MainScriptURL = "loadstring(game:HttpGet("https://raw.githubusercontent.com/kisbeyazit/YBK-babft/refs/heads/main/scripts/prototype.lua?token=GHSAT0AAAAAAEOQHNWONJ52WCJD7XH2WA4I2XKCJ7Q"))()"
-local SecondModuleURL = "second_module_url_placeholder"
+local SecondModuleURL = "loadstring(game:HttpGet("https://raw.githubusercontent.com/kisbeyazit/YBK-babft/refs/heads/main/scripts/SecondModule.lua?token=GHSAT0AAAAAAEOQHNWON65YDLPW5HTU6FMI2XKCNSA"))()"
 local DiscordURL = "https://raw.githubusercontent.com/Vyrusspcs/weshkyv2/refs/heads/main/client/external/discord.lua"
 
 local FolderName = "VoltaraBuildStorage"
