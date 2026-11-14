@@ -1,11 +1,10 @@
--- Voltra Loader
--- Loading the Main Script and Second Module and if not used the Script before the Discord Module
-
--- Made with Love by Vyrusspcs
+-- Voltra Loader (Düzeltilmiş Versiyon)
+-- Made with Love by Vyrusspcs 
 -- https://discord.gg/u46cvej5xM
+-- YBK scirpt
 
-local MainScriptURL = "loadstring(game:HttpGet("https://raw.githubusercontent.com/kisbeyazit/YBK-babft/refs/heads/main/scripts/prototype.lua"))()"
-local SecondModuleURL = "loadstring(game:HttpGet("https://raw.githubusercontent.com/kisbeyazit/YBK-babft/refs/heads/main/scripts/SecondModule.lua"))()"
+local MainScriptURL = "https://raw.githubusercontent.com/kisbeyazit/YBK-babft/refs/heads/main/scripts/prototype.lua"
+local SecondModuleURL = "https://raw.githubusercontent.com/kisbeyazit/YBK-babft/refs/heads/main/scripts/SecondModule.lua"
 local DiscordURL = "https://raw.githubusercontent.com/Vyrusspcs/weshkyv2/refs/heads/main/client/external/discord.lua"
 
 local FolderName = "VoltaraBuildStorage"
