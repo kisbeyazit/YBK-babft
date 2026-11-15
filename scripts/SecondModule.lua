@@ -24,6 +24,7 @@ local window = library.new({
 
 window.open()
 
+-- Sekmelerin doğru isimlendirmeleri (New Tab hatasını çözer)
 local mainTab = window.new({ text = "Auto Farm" })
 local databaseTab = window.new({ text = "Database" })
 local specialTab = window.new({ text = "Special" })
@@ -31,9 +32,6 @@ local clientTab = window.new({ text = "Client" })
 local creditsTab = window.new({ text = "Credits" })
 mainTab:show()
 
---------------------------------------------------------------------------------------------------------------------------------------------------------------
---------------------------------------------------------------------------------------------------------------------------------------------------------------
---------------------------------------------------------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -400,29 +398,10 @@ farmFolder.new("button", {
     
     UpdateCurrentGoldDisplay()
     
-    if webhookEnabled then
-        task.spawn(function()
-            task.wait(1)
-            -- SendWebhook()
-        end)
-    end
-    
     if isTimerRunning then
         farmStartTime = os.time()
     end
 end)
-
-local currentGoldUpdateThread = nil
-local function StartCurrentGoldUpdate()
-    if currentGoldUpdateThread then return end
-    
-    currentGoldUpdateThread = task.spawn(function()
-        while true do
-            UpdateCurrentGoldDisplay()
-            task.wait(1)
-        end
-    end)
-end
 
 farmFolder.new("switch", {
     text = "Autofarm",
@@ -482,44 +461,6 @@ end)
 
 farmFolder.open()
 
-local webhookUrl = ""
-local webhookEnabled = false
-local webhookInterval = 300
-local webhookThread = nil
-
-local webhookFolder = mainTab.new("folder", {
-    text = "Webhook Notifications",
-})
-
-webhookFolder.new("input", {
-    text = "Webhook URL",
-    placeholder = "https://...",
-}).event:Connect(function(value)
-    webhookUrl = value
-end)
-
-webhookFolder.new("slider", {
-    text = "Update Interval (seconds)",
-    min = 60,
-    max = 3600,
-    value = 300,
-    floating = 0,
-}).event:Connect(function(value)
-    webhookInterval = value
-end)
-
-webhookFolder.new("switch", {
-    text = "Enable Webhook",
-}).event:Connect(function(state)
-    webhookEnabled = state
-end)
-
-webhookFolder.open()
-
---------------------------------------------------------------------------------------------------------------------------------------------------------------
---------------------------------------------------------------------------------------------------------------------------------------------------------------
---------------------------------------------------------------------------------------------------------------------------------------------------------------
---------------------------------------------------------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 local BuildDatabase = databaseTab.new("dropdown", {
@@ -530,7 +471,6 @@ local dropdownObjects = {}
 local selectedBuild = nil
 local buildsFolder = "WeshkyBuildStorage"
 
--- Yerel dosya fonksiyonları çakışmasını önlemek için güvenli sarmalayıcılar
 pcall(function()
     if not isfolder(buildsFolder) then
         makefolder(buildsFolder)
@@ -729,8 +669,6 @@ end)
 fakeGoldFolder.open()
 
 -------------------------------------------------------------------------------------------- Exclusive
--------------------------------------------------------------------------------------------- Exclusive
--------------------------------------------------------------------------------------------- Exclusive
 
 local eggCanonFolder = specialTab.new("folder", {
     text = "Egg Canon Farm",
@@ -764,8 +702,6 @@ tpplace.new("button", {
     TeleportService:Teleport(1930665568, game.Players.LocalPlayer)
 end)
 
--------------------------------------------------------------------------------------------- Credits
--------------------------------------------------------------------------------------------- Credits
 -------------------------------------------------------------------------------------------- Credits
 
 local creditsFolder = creditsTab.new("folder", {
